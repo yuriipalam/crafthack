@@ -84,13 +84,22 @@ select {
 
 .select-doctor-hospital {
     padding: 10px 15px 10px 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-right: 15px;
     width: 300px;
-    font-weight: 400;
     font-family: 'Open Sans', sans-serif;
     color: #222;
     border: 1px solid #fff;
     border-radius: 10px;
+    background-color: white;
+}
+
+.select-doctor-hospital p {
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .select-doctor-hospital:focus {
