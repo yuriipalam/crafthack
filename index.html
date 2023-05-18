@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
-<body>
-    
+
+<body style="height: 100vh; background: linear-gradient(98.66deg,#d6e9ff 2.52%,#ffddf7);">
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 0;">Search for doctors, clinics and medicines online</h1>
+        <h2 style="text-align: center; margin-top: 5px;">Make an appointment without leaving your home</h2>
+        <form class="search-box">
+            <select class="select-doctor-hospital">
+                <option value="doctor" id="doctor">
+                    Make an appointment with a doctor</option>
+                <option value="hospital" id="hospital">Find hospital</option>
+            </select>
+            <input id="search-box-input" type="text" placeholder="Enter name or specialization">
+            <button type="text" class="btn-blue"><span>Find</span></button>
+        </form>
+    </div>
 </body>
+
+<script>
+    const selectElement = document.querySelector('.select-doctor-hospital')
+    const options = selectElement.querySelectorAll('option')
+    const searchInput = document.querySelector("#search-box-input")
+
+    selectElement.addEventListener('change', function () {
+        const selectedOption = this.options[this.selectedIndex]
+        if (selectedOption.id === 'doctor') {
+            searchInput.placeholder = 'Enter name or specialization'
+        } else if (selectedOption.id === 'hospital') {
+            searchInput.placeholder = 'Enter hospital name or address'
+        }
+    });
+</script>
+
 </html>
