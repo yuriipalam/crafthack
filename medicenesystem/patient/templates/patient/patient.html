@@ -1,0 +1,100 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand" href="#">Profile</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+    <main class="mb-5">
+        <div class="container-small mt-4">
+            <div class="d-flex justify-content-center">
+                <div class="d-flex me-1">
+                    <img class="me-4" width="240px" height="240px" src="{% static 'img/patient_pic.jpg' %}" alt="">
+                    <div class="d-flex flex-column">
+                        <div class="mb-1">
+                            <p class="fs-6 mb-0 text-muted">Name:</p>
+                            <p class="mt-0 mb-1">{{ p.first_name }} {{ p.last_name }}</p>
+                        </div>
+                        <div class="mb-1 mt-0">
+                            <p class="fs-6 mb-0 text-muted">Date of birth:</p>
+                            <p class="mt-0 mb-1">{{ p.birth_date }}</p>
+                        </div>
+                        <div class="mb-1 mt-0">
+                            <p class="fs-6 mb-0 text-muted">Address:</p>
+                            <p class="mt-0 mb-1">{{ p.address }}</p>
+                        </div>
+                        <div class="mb-0 mt-0">
+                            <p class="fs-6 mb-0 text-muted">TAJ number:</p>
+                            <p class="mt-0">{{ p.social_number }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column ms-0">
+                    <p>Your hospital</p>
+                    <img width="250px" src="https://budapestbeacon.com/wp-content/uploads/2014/12/Eger-hospital-e1417438893807.jpg" alt="">
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-header">
+                    Your doctor set a treatment plan for you
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Instruction</h5>
+                  <p class="card-text">{{ p.instruction.description }}</p>
+                </div>
+            </div>
+            <div class="accordion accordion-flush mt-3 container-mini" id="accordionFlushExample">
+                {% for pillow in pillows %}
+                <div class="accordion-item mb-2 bg-light">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-secondary-subtle" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{pillow.id}}" aria-expanded="false" aria-controls="flush-collapse{{pillow.id}}">
+                        {{ pillow.name }}
+                    </button>
+                  </h2>
+                  <div id="flush-collapse{{pillow.id}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">From {{ pillow.start_date }} to {{ pillow.finish_date }}, {{ pillow.times_per_day }} time(s) a day.</div>
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% comment %} <h3>Pillows:</h3>
+            {% for pillow in pillows %}
+                {{ pillow.name }}, from {{ pillow.start_date }} to {{ pillow.finish_date }}, {{ pillow.times_per_day }} time(s) a day.<br>
+            {% endfor %} {% endcomment %}
+            {% comment %} <h3 class="mt-3">Medical history</h3>
+            <a href="#">First case</a><br>
+            <a href="#">Second case</a> {% endcomment %}
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

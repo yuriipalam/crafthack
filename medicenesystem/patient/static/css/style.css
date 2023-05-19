@@ -1,0 +1,13 @@
+.container {
+    max-width: 980px;
+}
+
+.container-small {
+    margin: auto;
+    max-width: 780px;
+}
+
+.container-mini {
+    margin: auto;
+    max-width: 600px;
+}
