@@ -1,5 +1,5 @@
 # Medicene System - HealthMate
 
-Application for doctor and his patients created with Python and Django 4
+Application for a doctor and his patients created with Django 4
 
-Websitite Wirefrime created in AdobeXD
+Wirefrime is available in AdobeXD
